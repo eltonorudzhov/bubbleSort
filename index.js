@@ -3,15 +3,20 @@ import getRandom from "./src/js/random.js";
 // объявления
 let inputsValues = generate();
 let trDiv = document.createElement("tr");
+let speed = (13-inputsValues.speed)*100
 let w = 1200 / inputsValues.count;
+
 for (let i = 0; i < inputsValues.count; i++) {
   let elemNumber = getRandom(inputsValues.min, inputsValues.max);
   let td = document.createElement("td");
+  if (w>400)
+    w=400
   td.style.textAlign = td.style.width = w + "px";
   td.style.fontSize = w / 2 + "px";
   td.id = "td" + i;
   td.style.height = w + "px";
   trDiv.appendChild(td);
+  td.setAttribute("class", 'simple');
   td.innerHTML = +elemNumber;
 }
 document.getElementById("sortElements").append(trDiv);
@@ -23,35 +28,38 @@ function sortBubble() {
     return;
   }
   let i = inputsValues.count - 1;
-  // timer(i)
   let interv;
-
   setTimeout(function run() {
-    interv = (i + 3) * 300;
+    console.log(speed)
+    interv = (i + 3) * speed;
     timer(i);
     if (i > 1) {
       setTimeout(run, interv);
     } else {
-      document.getElementById("td0").setAttribute("class", "simple");
-      document.getElementById("td1").setAttribute("class", "simple");
+      changeClass(0, "simple");
+      changeClass(1, "simple");
       return;
     }
     i--;
   }, interv);
 }
-
+function changeClass(id, className) {
+  document.getElementById("td" + id).setAttribute("class", className);
+}
 function timer(i) {
   let j = 0;
-  document.getElementById("td0").setAttribute("class", "checker");
+  changeClass(0, "checker");
+  //document.getElementById("td0").setAttribute("class", "checker");
   console.log(i, j);
   let firstTimer = setInterval(function() {
     if (j == i - 1) {
-      document.getElementById("td" + j).setAttribute("class", "simple");
+      changeClass(j, "simple");
+      //   document.getElementById("td" + j).setAttribute("class", "simple");
       clearInterval(firstTimer);
     }
     check(i, j);
     j++;
-  }, 300);
+  }, speed);
 }
 
 function check(i, j) {
@@ -63,16 +71,11 @@ function check(i, j) {
   } else {
     setTimeout(() => {
       console.log("хы");
-      if (j + 2 <= i)
-        document
-          .getElementById("td" + (j + 1))
-          .setAttribute("class", "checker");
-      else
-        document.getElementById("td" + (j + 1)).setAttribute("class", "simple");
+      if (j + 2 <= i) changeClass(j + 1, "checker");
+      else changeClass(j + 1, "simple");
     }, 50);
-    if (j + 2 <= i)
-      document.getElementById("td" + (j + 1)).setAttribute("class", "checked");
-    document.getElementById("td" + j).setAttribute("class", "simple");
+    if (j + 2 <= i) changeClass(j + 1, "checked");
+    changeClass(j, "simple");
   }
 }
 function change(j) {
