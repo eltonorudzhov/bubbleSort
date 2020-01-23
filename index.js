@@ -25,30 +25,35 @@ function sortBubble() {
   timer(i)
   i--;
   let timerId = setInterval(function() {
-
     document.getElementById("td" + (i + 1)).setAttribute("class", "simple");
     document.getElementById("td0").setAttribute("class", "checker");
-    if (i < 0) {
+    console.log(i)
+    if (i==1) {
+      console.log("ААА")
+      clearInterval(timerId);
+      
       document.getElementById("td0").setAttribute("class", "simple");
       document.getElementById("td1").setAttribute("class", "simple");
-      clearInterval(timerId);
     }
-
     timer(i)
 
     i--;
-  }, 800 * inputsValues.count);
+  }, 500 *inputsValues.count);
+ 
 }
+
+
 function timer(i){
   let j = 0
+  
+  console.log(i, j)
   let firstTimer = setInterval(function() {
-    document.getElementById("td" + (inputsValues.count-1-i)).setAttribute("class", "simple");
-    if (j >= i) {
+    if ((j==i-1)) {
       clearInterval(firstTimer);
     }
     check(j);
     j++;
-  }, 800);
+  }, 500);
 }
 
 function check(j) {
@@ -58,7 +63,14 @@ function check(j) {
   ) {
     change(j);
   } else {
-    document.getElementById("td" + (j + 1)).setAttribute("class", "checker");
+    setTimeout(() =>{
+      console.log("хы")
+       document.getElementById("td" + (j + 1)).setAttribute("class", "checker")
+      },300
+       
+       );
+       
+    document.getElementById("td" + (j + 1)).setAttribute("class", "checked")
     document.getElementById("td" + j).setAttribute("class", "simple");
   }
 }
@@ -72,5 +84,4 @@ function change(j) {
   document.getElementById("td" + j).id = "td" + (j + 1);
   document.getElementById("td" + (j + 1)).id = "td" + j;
 
-  document.getElementById("td" + j).setAttribute("class", "simple");
 }
