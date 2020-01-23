@@ -32,8 +32,6 @@ function sortBubble() {
     if (i > 1) {
       setTimeout(run, interv);
     } else {
-      console.log(i);
-      console.log("DDD");
       document.getElementById("td0").setAttribute("class", "simple");
       document.getElementById("td1").setAttribute("class", "simple");
       return;
@@ -51,12 +49,12 @@ function timer(i) {
       document.getElementById("td" + j).setAttribute("class", "simple");
       clearInterval(firstTimer);
     }
-    check(j);
+    check(i, j);
     j++;
   }, 300);
 }
 
-function check(j) {
+function check(i, j) {
   if (
     +document.getElementById("td" + j).textContent >
     +document.getElementById("td" + (j + 1)).textContent
@@ -65,10 +63,15 @@ function check(j) {
   } else {
     setTimeout(() => {
       console.log("хы");
-      document.getElementById("td" + (j + 1)).setAttribute("class", "checker");
+      if (j + 2 <= i)
+        document
+          .getElementById("td" + (j + 1))
+          .setAttribute("class", "checker");
+      else
+        document.getElementById("td" + (j + 1)).setAttribute("class", "simple");
     }, 50);
-
-    document.getElementById("td" + (j + 1)).setAttribute("class", "checked");
+    if (j + 2 <= i)
+      document.getElementById("td" + (j + 1)).setAttribute("class", "checked");
     document.getElementById("td" + j).setAttribute("class", "simple");
   }
 }
