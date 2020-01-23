@@ -20,25 +20,29 @@ document.getElementById("sortElements").append(trDiv);
 sortBubble();
 
 function sortBubble() {
+  if (inputsValues.count==1){
+    return
+  }
   let i = inputsValues.count - 1;
   document.getElementById("td0").setAttribute("class", "checker");
   timer(i)
   i--;
   let timerId = setInterval(function() {
-    document.getElementById("td" + (i + 1)).setAttribute("class", "simple");
     document.getElementById("td0").setAttribute("class", "checker");
     console.log(i)
-    if (i==1) {
+    if (i==0) {
       console.log("ААА")
       clearInterval(timerId);
       
       document.getElementById("td0").setAttribute("class", "simple");
       document.getElementById("td1").setAttribute("class", "simple");
+      return
     }
     timer(i)
 
+    document.getElementById("td" + (i + 1)).setAttribute("class", "simple");
     i--;
-  }, 500 *inputsValues.count);
+  }, 400*(i+3));
  
 }
 
@@ -53,7 +57,7 @@ function timer(i){
     }
     check(j);
     j++;
-  }, 500);
+  }, 400);
 }
 
 function check(j) {
@@ -66,7 +70,7 @@ function check(j) {
     setTimeout(() =>{
       console.log("хы")
        document.getElementById("td" + (j + 1)).setAttribute("class", "checker")
-      },300
+      },50
        
        );
        
