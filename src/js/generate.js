@@ -1,3 +1,5 @@
+import createElements from './createElements.js'
+
 export default function generate(){
     let inputsValues={
         max: '',
@@ -13,5 +15,6 @@ export default function generate(){
     inputsValues.count = +element.value
     element = document.getElementById("Speed");
     inputsValues.speed = +element.value
+    createElements(inputsValues)
     return inputsValues
 }
