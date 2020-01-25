@@ -1,33 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="content-type" content="text/html; charset=windows-1251" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <script type="module" src="./index.js"></script>
     <link rel="stylesheet" type="text/css" href="./src/style/index.css" />
   </head>
 
   <body id="body">
-    <nav id="GenerateNav">
+    <nav id="generateNav">
       <div id="divChecks">
-        <label for="MinValue">Min</label>
-        <input id="MinValue" type="text" value="0" />
-
-        <label for="MaxValue">Max</label>
-        <input id="MaxValue" type="text" value="100" />
-        <label for="ItemNumber">Number of items</label>
-        <input id="ItemNumber" type="text" value="15" />
-      
-        <button id="GenerateButton">Generate</button>
-        
-        <button id="Start" class="start-button">Start</button>
-        <label for="Speed" class="speed-label">Speed</label>
-        <input id="Speed" type="number" value="1" min="1" max="10" />
-        <button id="SpeedButton">Speed</button>
+        <label for="minValue">Минимум</label>
+        <input id="minValue" type="text" value="0" />
+        <label for="maxValue">Максимум</label>
+        <input id="maxValue" type="text" value="100" />
+        <label for="itemNumber">Число элементов</label>
+        <input id="itemNumber" type="number" value="15" min="1" max="50"/>
+        <label for="speed" >Скорость</label>
+        <input id="speed" type="number" value="1" min="1" max="10" />
+        <button id="generateButton">Генерировать</button>
+        <button id="startButton" class="start-button">Старт</button>
       </div>
     </nav>
-    <div class="sort-action-panel">
+    <div class="infoText">
+      Сгенерируйте элементы и нажмите кнопку "Старт"
+    </div>
+    <div class="sort-action-panel">     
       <table id="sortElements">
-      
+       
       </table>
     <div>
   </body>

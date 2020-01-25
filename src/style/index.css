@@ -1,3 +1,6 @@
+html,body{
+    margin: 0;
+}
 #divChecks {
     display: inline-flex; 
     width: 100%;
@@ -15,28 +18,36 @@ label{
 body{
     width: 100%;
     height: 100%;
-    margin-top: 12px;   
 }
 
 html {
     width: 100%;
     height: 100%;
     background: rgb(255, 241, 219);
+    margin: 0;
 }
 
 button {
     margin: 0 8px;
     font-size: 18px;
-    border: 2px solid white;
+    border: 1px solid white;
+    border-radius: 10px;
 }
-
+button:hover {
+	background: rgba(0,0,0,0);
+	box-shadow: inset 0 0 0 1px;
+}
+.infoText{
+    font-size: 20px;
+    color: rgb(34, 34, 34)
+}
 .simple{
     background:  linear-gradient(45deg, rgb(168, 220, 255), rgb(70, 115, 143));
 }
 .checker{
     background: linear-gradient(45deg, rgb(211, 47, 47), rgb(110, 64, 170));
 }
-.checked{
+.new-checker{
     background: green;
 }
 .sort-action-panel {
@@ -45,19 +56,12 @@ button {
     display: flex;
     align-items: center;
     align-content: center; 
-    justify-content: center; 
-}
-table{
-    display: table-cell;
-    vertical-align: middle;
+    justify-content: center;
 }
 td {
     text-align: center;
     border: 1px solid;
     border-radius: 100%;
-}
-.speed-label {
-    margin-left: auto;
 }
 .start-button {
     margin: 0 auto;
