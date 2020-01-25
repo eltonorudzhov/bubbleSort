@@ -1,4 +1,4 @@
-import createElements from './createElements.js'
+import createElements from './createelements.js'
 import getInput from './getinput.js'
 export default function generate(){
    let inputsValues={
